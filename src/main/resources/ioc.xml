@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person" class="com.zx.entity.Person">
+        <property name="zx_name" value="涛哥"></property>
+        <property name="zx_age" value="18"></property>
+    </bean>
+
+    <bean id="person1" class="com.zx.entity.Person">
+        <constructor-arg name="zx_age" value="17"></constructor-arg>
+        <constructor-arg name="zx_name" value="小涛"></constructor-arg>
+
+    </bean>
+
+    <bean id="xt" class="com.zx.entity.Person">
+        <property name="zx_name" value="涛哥er"></property>
+        <property name="zx_age" value="19"></property>
+        <property name="address" ref="address"></property>
+
+        <property name="hobbies" value="palying">
+
+            <!--<array>-->
+                <!--<value>read</value>-->
+                <!--<value>sing</value>-->
+            <!--</array>-->
+        </property>
+
+        <property name="lists">
+            <list>
+               <bean id="testadd" class="com.zx.entity.Address">
+                   <property name="privnce" value="北京"></property>
+                   <property name="city" value="东城"></property>
+               </bean>
+                <ref bean="address"></ref>
+
+            </list>
+
+        </property>
+
+        <property name="sets">
+
+            <set>
+                <value>zx</value>
+                <value>zx</value>
+                <value>zixi</value>
+            </set>
+
+        </property>
+
+        <property name="map">
+
+           <map>
+
+               <entry key="1" value="taoer"></entry>
+               <entry key="2" value-ref="address"></entry>
+               <entry>
+                   <key><value>3</value></key>
+                   <value>痘痘</value>
+               </entry>
+               <entry key="4">
+                   <bean class="com.zx.entity.Address">
+                       <property name="privnce" value="四川"></property>
+                   </bean>
+               </entry>
+
+               <entry key="5">
+
+                   <array>
+                       <value>小伙</value>
+                       <value>姑娘</value>
+                   </array>
+
+               </entry>
+
+               <entry key="6">
+
+                   <map>
+                       <entry key="6-1" value="小龙女"></entry>
+                       <entry key="6-2" value="过儿"></entry>
+                   </map>
+
+               </entry>
+
+               <entry key="7">
+                   <set>
+                       <value>靖哥哥</value>
+                       <value>蓉儿</value>
+                   </set>
+
+               </entry>
+           </map>
+
+        </property>
+
+    </bean>
+
+    <bean id="address" class="com.zx.entity.Address">
+        <property name="privnce" value="陕西"></property>
+        <property name="city" value="西安"></property>
+        <property name="town" value="雁塔区"></property>
+
+    </bean>
+
+</beans>

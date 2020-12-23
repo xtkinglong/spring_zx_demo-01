@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <!--<bean id="myCalculatorForAOP" class="com.zx.dao.impl.MyCalculatorForAOP"></bean>-->
+    <!--<context:component-scan base-package="com.zx"></context:component-scan>-->
+    <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+    <bean id="myCalculatorForCGlib" class="com.zx.dao.impl.MyCalculatorForCGlib"></bean>
+    <bean id="logUtilForXmlCGlib" class="com.zx.util.LogUtilForXmlCGlib"></bean>
+
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="execution(public  int  com.zx.dao.impl.MyCalculatorForCGlib.*(int ,int ))"></aop:pointcut>
+        <aop:aspect ref="logUtilForXmlCGlib">
+            <aop:before method="start" pointcut-ref="mypoint"></aop:before>
+            <aop:after-returning method="stop" pointcut-ref="mypoint" returning="res"></aop:after-returning>
+            <aop:after method="endMethod" pointcut-ref="mypoint"></aop:after>
+            <aop:after-throwing method="logException" pointcut-ref="mypoint"></aop:after-throwing>
+            <aop:around method="myRound" pointcut-ref="mypoint"></aop:around>
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>
