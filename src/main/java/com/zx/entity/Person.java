@@ -12,6 +12,11 @@ public class Person {
 
     private String[] hobbies;
 
+    private Address address;
+    private List<Address> lists;
+    private Set<String> sets;
+    private Map<String, Object> map;
+
     @Override
     public String toString() {
         return "Person{" +
@@ -26,16 +31,20 @@ public class Person {
                 '}';
     }
 
-    private Address address;
-    private List<Address> lists;
-    private Set<String> sets;
-    private Map<String, Object> map;
 
+    Person(){
+
+    }
 
     public Person(String zx_name, int zx_age, int addres_num) {
         this.zx_name = zx_name;
         this.zx_age = zx_age;
         this.addres_num = addres_num;
+    }
+
+    public Person(String zx_name, int zx_age) {
+        this.zx_name = zx_name;
+        this.zx_age = zx_age;
     }
 
     public int getAddres_num() {
@@ -86,14 +95,7 @@ public class Person {
         this.map = map;
     }
 
-    Person(){
 
-    }
-
-    public Person(String zx_name, int zx_age) {
-        this.zx_name = zx_name;
-        this.zx_age = zx_age;
-    }
 
     public String getZx_name() {
         return zx_name;

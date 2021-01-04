@@ -94,6 +94,7 @@ public class TestJdbcSource {
 
     @Test
     public void  testQuery(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("aop.xml");
         PersonController personController = context.getBean("personController", PersonController.class);
         Person person = new Person("zixi", 18, 10);
         List<Person> personCon = personController.getPersonCon(person);
