@@ -22,20 +22,21 @@
     <h1>${sessionScope.get("zx")}</h1>
     <button id="aj"> 测试ajax</button>
     <div id="append"></div>
-    <form action="${ctp}/perweb" method="post">
-        <input type="text" name="zx_name" placeholder="xxx">
-        <input type="text" name="zx_age" placeholder="xxx">
-        <input type="text" name="addres_num" placeholder="xxx">
+    <hr>
+    <form action="${ctp}/testRequestBody" method="post">
+        <input type="text" name="zx_name" placeholder="xxx"><br>
         <input type="submit" value="提交">
     </form>
     <br>
 
 
-    <form action="${ctp}/conver" method="post">
-        <input type="text" name="usert">
+    <form action="${ctp}/file_sc" method="post" enctype="multipart/form-data">
+        <input type="text" name="zx_name" placeholder="xxx"><br>
+        <input type="file" name="file"><br>
+        <input type="file" name="file"><br>
+        <input type="file" name="file"><br>
         <input type="submit" value="提交">
     </form>
-
 
     
     <img src="${ctp}/images/IMG_2701.jpg" height="300px" width="600px">

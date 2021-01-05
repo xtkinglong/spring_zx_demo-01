@@ -40,6 +40,11 @@
         </property>
     </bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="maxUploadSize" value="10240000"></property>
+    </bean>
+
 
     <!--<bean id="myCalculatorForAOP" class="com.zx.dao.impl.MyCalculatorForAOP"></bean>-->
     <context:component-scan base-package="com.zx"></context:component-scan>
@@ -71,6 +76,13 @@
         <property name="dataSource" ref="dataSource"></property>
 
     </bean>
+
+
 <!--开启基于注解的事务控制模式，依赖tx命名空间-->
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    
+    
+    <mvc:interceptors>
+        <bean class="com.zx.Controller.InterceptorTest"></bean>
+    </mvc:interceptors>
 </beans>
